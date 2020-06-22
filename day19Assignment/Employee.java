@@ -9,11 +9,10 @@ import java.util.Scanner;
 public class Employee {
 	
 	Scanner scanner;
-	ArrayList<BusModel> buslist= new  ArrayList<BusModel>();
-	BusModel busModel= new BusModel();
+	ArrayList<BusModel> buslist = new  ArrayList<BusModel>();
 	public Employee() {
 		scanner = new Scanner(System.in);
-
+		
 	}
 	int id;
 	String name;
@@ -68,14 +67,19 @@ public class Employee {
 	
 	public void GetEmployeeDetailsFromUser()
 	{
+		Transport tr= new Transport();
 		System.out.println("Please enter Name");
 		name = scanner.nextLine();
+		setName(name);
 		System.out.println("Please enter id");
+		setId(id);
 		id = scanner.nextInt();
 		 System.out.println("Please enter  Date of Birth DD/MM/YYYY");
 	       dob= scanner.nextLine();
+	       dob= scanner.nextLine();
 	       age=ageCalculation(dob);
 	       setAge(age);
+	       tr.populateemployee(getName(),getId(),getAge());
 //	       System.out.println("Please enter bus id");
 //	       busId = scanner.nextInt();
 	}

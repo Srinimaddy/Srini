@@ -10,12 +10,14 @@ public class BusModel {
 	boolean filledStatus=false;
 	String source="";
 	ArrayList<Driver> driverList;
-	Driver driver = new Driver();
-	Employee em= new Employee();
+	
+	ArrayList<BusModel> busList;
 	Scanner sc;
 	public BusModel() {
 		sc= new Scanner(System.in);
 		driverList= new ArrayList<Driver>();
+		busList= new ArrayList<BusModel>();
+		
 	}
 	public String getBusNumber() {
 		return busNumber;
@@ -36,12 +38,7 @@ public class BusModel {
 		this.filledStatus = filledStatus;
 	}
 	 		
-	public Driver getDriver() {
-		return driver;
-	}
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
+	
 	
 	public String getSource() {
 		return source;
@@ -51,19 +48,15 @@ public class BusModel {
 	}
 
 	
-	public void populateDriver(int driverId, String driverPhone, String driverName) {
-		
-		driver.setDriverId(driverId);
-		driver.setDriverName(driverName);
-		driver.setDriverPhone(driverPhone);
-		driverList.add(driver);
-		
-		
-	}
+	
 	
 	public void GetBusDetailsFromUser()
 	{
+		Transport tr= new Transport();
+		Driver driver1= new Driver();
 		int id;
+		busList= tr.populateBus(getBusNumber(),getCapacity(),getSource());
+		driverList=pop();
 		System.out.println("Select the driver from the below list");
 		for(Driver driver:driverList)
 		{
@@ -72,7 +65,7 @@ public class BusModel {
 		System.out.println("Enter thr driver id");
 		id= sc.nextInt();
 		sc.nextLine();
-		driver.setDriverId(id);
+		driver1.setDriverId(id);
 		System.out.println("Please enter Bus number");
 		busNumber=sc.nextLine();
 		setBusNumber(busNumber);
@@ -83,6 +76,13 @@ public class BusModel {
 		System.out.println("Please enter Source");
 		source=sc.nextLine();
 		setSource(source);
+		
+	}
+	private ArrayList<Driver> pop() {
+		Driver driver1= new Driver();
+		Transport tr= new Transport();
+		return driverList= tr.populateDriver(driver1.getDriverPhone(),driver1.getDriverId(),driver1. getDriverName());
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package day19Assignment;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver {
@@ -9,12 +10,12 @@ public class Driver {
 	String driverPhone="";
 	boolean busallocated=false;
 	Scanner sc;
+	ArrayList<Driver> driverList;
 	
-	Employee employee= new Employee();
-	BusModel busModel;
+
 	public Driver() {
 		sc= new Scanner(System.in);
-		 busModel=new BusModel();
+		driverList= new ArrayList<Driver>();
 		 
 	}
 	public int getDriverId() {
@@ -43,8 +44,9 @@ public class Driver {
 	}
 	
 	public void getDetailsFromUser()
-	{
-		BusModel busModel= new BusModel();
+	{	
+		Transport tr= new Transport();
+		pop();
 		System.out.println("Please enter driver id");
 		driverId=sc.nextInt();
 		setDriverId(driverId);
@@ -55,11 +57,16 @@ public class Driver {
 		System.out.println("Please enter driver phone");
 		driverPhone=sc.nextLine();
 		setDriverPhone(driverPhone);
-		busModel.populateDriver(getDriverId(), getDriverPhone(), getDriverName());
+		tr.populateDriver(getDriverPhone(), getDriverId(), getDriverName());
 		}
+	private void pop() {
+		Driver driver1= new Driver();
+		Transport tr= new Transport();
+		driverList= tr.populateDriver(driver1.getDriverPhone(),driver1.getDriverId(),driver1. getDriverName());
+		
+	}
 	@Override
 	public String toString() {
-		return "Driver [driverId=" + driverId + ", driverName=" + driverName + ", driverPhone=" + driverPhone + ", sc="
-				+ sc + "]";
+		return "Driver [driverId=" + driverId + ", driverName=" + driverName + ", driverPhone=" + driverPhone ;
 	}
 }
