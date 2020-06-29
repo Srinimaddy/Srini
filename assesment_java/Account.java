@@ -112,10 +112,5 @@ double checkBalance() {
 
     }
 
-	public void printUserAccounts() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
